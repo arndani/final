@@ -13,17 +13,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>Alex and Dans Wedding!</title>
+    <title>Geocoding</title>
   </head>
   <body>
 
     <div class="container mt-5">
-      <%= yield %>
+      <h1>Geocoding</h1>
+      <form action="/wedding/map/view">
+        <input type="text" name="q">
+        <button type="submit">Go there</submit>
+      </form>
     </div>
 
     <!-- Optional JavaScript -->

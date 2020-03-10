@@ -13,17 +13,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>Alex and Dans Wedding!</title>
+    <title>Dice</title>
   </head>
   <body>
 
     <div class="container mt-5">
-      <%= yield %>
+      <h1>Hotel Location</h1>
+      <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+          &q=<%= @lat_long %>&zoom=6" allowfullscreen>
+      </iframe>
+      <p>
+        <a href="/" class="btn btn-primary">Go again!</a>
+      </p>
     </div>
 
     <!-- Optional JavaScript -->

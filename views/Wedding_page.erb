@@ -1,0 +1,14 @@
+<h1>Alex & Dans Italian Wedding</h1>
+
+
+<% for event in @wedding %>
+    <p><a href="/wedding/<%= event[:id] %>"><%= event[:title] %></a></p>
+<% end %>
+
+    <div class="container mt-5">
+      <h1>View Hotel Locations</h1>
+      <form action="/wedding/map/view">
+        <input type="text" name="q">
+        <button type="submit">View</submit>
+      </form>
+    </div>
