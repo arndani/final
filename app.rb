@@ -15,6 +15,11 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
+my_password = BCrypt::Password.create("my password")
+#=> "$2a$12$K0ByB.6YI2/OYrB4fQOYLe6Tv0datUVf6VZ/2Jzwm879BW5K1cHey"
+my_password = BCrypt::Password.new("$2a$12$K0ByB.6YI2/OYrB4fQOYLe6Tv0datUVf6VZ/my_password == "my password" #=> true
+my_password == "not my password" #=> false
+
 wedding_table = DB.from(:Wedding_Event)
 hotel_table = DB.from(:hotel)
 
@@ -56,8 +61,8 @@ end
 
 
 get "/wedding/map/view" do
-    
-    results = Geocoder.search(params["q"])
+    @test=params["cars"]
+    results = Geocoder.search(params["cars"])
     lat_long = results.first.coordinates # => [lat, long]
       @lat = lat_long[0]
   @long =  lat_long[1]
