@@ -5,7 +5,7 @@ require "sequel"                                                                
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
 require "bcrypt"   
-require "geocoder"                                                                   #
+require "geocoder"                                                            #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -15,13 +15,15 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-my_password = BCrypt::Password.create("my password")
+#my_password = BCrypt::Password.create("my password")
 #=> "$2a$12$K0ByB.6YI2/OYrB4fQOYLe6Tv0datUVf6VZ/2Jzwm879BW5K1cHey"
-my_password = BCrypt::Password.new("$2a$12$K0ByB.6YI2/OYrB4fQOYLe6Tv0datUVf6VZ/my_password == "my password" #=> true
-my_password == "not my password" #=> false
+#my_password = BCrypt::Password.new("$2a$12$K0ByB.6YI2/OYrB4fQOYLe6Tv0datUVf6VZ/6VZ/2Jzwm879BW5K1cHey")
+#my_password == "my password" #=> true
+#my_password == "not my password" #=> false
 
 wedding_table = DB.from(:Wedding_Event)
 hotel_table = DB.from(:hotel)
+user_table = DB.from(:user)
 
 
 get "/" do
@@ -40,12 +42,35 @@ get "/wedding/:id" do
     @details = wedding_table.where(id: params[:id]).to_a[0]
     @hotel=hotel_table.where(id: params[:id]).to_a[0]
     if@details[:id] == 1 then
+       
         view "RSVP"
     elsif @details[:id] == 2 then
+      
         view "Hotels"
     else
         view "search"
     end
+end
+
+
+get "/wedding/:id/load" do
+    puts params
+
+ user_table.insert(going: params["going"], 
+                      name: params["name"],
+                      email: params["email"])
+
+view "Submitted"
+end
+
+get "/wedding/:id/load2" do
+    puts params
+
+
+    user_table.insert(name: params["name"],
+                      email: params["email"],
+                      hotel: params["hotel"])
+view "Submitted"
 end
 
 get "/wedding/map" do

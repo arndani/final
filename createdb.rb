@@ -61,3 +61,7 @@ hotel_table.insert(hotel_name: "Rome Marriott Grand Hotel Flora",
                     website: "https://www.marriott.com/hotels/travel/romdt-rome-marriott-grand-hotel-flora/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2",
                     location: "Via Vittorio Veneto, 191, 00187 Roma RM, Italy")
 
+                      user_table = DB.from(:user)
+
+
+
