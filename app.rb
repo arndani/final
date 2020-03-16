@@ -26,6 +26,18 @@ hotel_table = DB.from(:hotel)
 user_table = DB.from(:user)
 
 
+account_sid = "ACd9b98685d9fc4d9075cd1310081e521f"
+auth_token = "Show"
+
+
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
+# send the SMS from your trial Twilio number to your verified non-Twilio number
+#client.messages.create(
+ #from: "+18326481436", 
+ #to: "+6302177912",
+ #body: "RSVP Sent!"
+
 get "/" do
     puts "params: #{params}"
 
